@@ -1,7 +1,7 @@
 "use strict";
 
 const crypto = require("crypto");
-const uuidv4 = require("uuid/v4");
+const { v4: uuidv4 } = require("uuid");
 const mozlog = require("../log");
 const log = mozlog("controllers.utils");
 
@@ -24,13 +24,7 @@ function generatePageToken(req) {
 }
 
 function hasUserSignedUpForRelay(user) {
-  if (!user.waitlists_joined) {
-    return false;
-  }
-  if (user.waitlists_joined.hasOwnProperty("email_relay")) {
-    return true;
-  }
-  return false;
+  return user.waitlists_joined && user.waitlists_joined.hasOwnProperty("email_relay");
 }
 
 function getTotalPercentage(variations) {

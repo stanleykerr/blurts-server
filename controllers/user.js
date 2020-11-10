@@ -377,7 +377,7 @@ function _updateResolvedBreaches(options) {
   } = options;
   // TODO: clarify the logic here. maybe change the endpoint to PUT /breach-resolution
   // with the new resolution value ?
-  const userBreachesResolved = user.breaches_resolved === null ? {} : user.breaches_resolved;
+  const userBreachesResolved = user.breaches_resolved || {};
   if (isResolved === "false") {
     if (Array.isArray(userBreachesResolved[affectedEmail])) {
       userBreachesResolved[affectedEmail].push(recencyIndexNumber);

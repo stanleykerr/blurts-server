@@ -1,8 +1,6 @@
 "use strict";
 
-
-// eslint-disable-next-line node/no-extraneous-require
-const uuidv4 = require("uuid/v4");
+const { v4: uuidv4 } = require("uuid");
 const Knex = require("knex");
 const { attachPaginate } = require("knex-paginate");
 
